@@ -1,14 +1,12 @@
 # hr-management
 
-This template should help get you started developing with Vue 3 in Vite.
+This project is built with Vue 3, Tailwind CSS, Directus SDK, Vue Query.
 
-## Recommended IDE Setup
+## Approach
+I used the Facade and KISS pattern and the latest vue composable approach to maximize the reusability and code maintenance. 
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+## Improvements
+If I could get more time then I would set the theme and colors on application level and also design the components more generically and with details.  
 
 ## Project Setup
 
