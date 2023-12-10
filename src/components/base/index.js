@@ -1,0 +1,5 @@
+export { default as BaseTable } from './Table.vue'
+export { default as BaseButton } from './Button.vue'
+export { default as BaseInput } from './Input.vue'
+export { default as BaseSelect } from './Select.vue'
+export { default as BaseBadge } from './Badge.vue'
