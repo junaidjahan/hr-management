@@ -1,6 +1,7 @@
 import { useDirectus } from '@/composables'
 import { readItem, readItems, withToken } from '@directus/sdk'
 import { computed, ref } from 'vue'
+import { useQuery } from 'vue-query'
 
 export const useEmployee = () => {
 
@@ -8,29 +9,33 @@ const { client } = useDirectus()
 const employees = ref([])
 const columns = [
     {
-    title:'Name',
-    value:'name'
-},
+        title: 'Name',
+        value:'first_name'
+    },
     {
-    title:'Title',
-    value:'title'
-},
+        title: 'Email',
+        value:'email'
+    },
     {
-    title:'Email',
-    value:'email'
-},
+        title: 'Status',
+        value:'status'
+    },
     {
-    title:'Role',
-    value:'role'
-},
+        title: 'Gender',
+        value:'gender'
+    },
 ]
 const people = [
-    { name: 'Lindsay Walton', title: 'Front-end Developer', email: 'lindsay.walton@example.com', role: 'Member' },
-    { name: 'Lindsay Walton', title: 'Front-end Developer', email: 'lindsay.walton@example.com', role: 'Member' },
-    { name: 'Lindsay Walton', title: 'Front-end Developer', email: 'lindsay.walton@example.com', role: 'Member' },
-    { name: 'Lindsay Walton', title: 'Front-end Developer', email: 'lindsay.walton@example.com', role: 'Member' },
-    { name: 'Lindsay Walton', title: 'Front-end Developer', email: 'lindsay.walton@example.com', role: 'Member' },
-    // More people...
+    { value: 1, name: 'Wade Cooper' },
+    { value: 2, name: 'Arlene Mccoy' },
+    { value: 3, name: 'Devon Webb' },
+    { value: 4, name: 'Tom Cook' },
+    { value: 5, name: 'Tanya Fox' },
+    { value: 6, name: 'Hellen Schmidt' },
+    { value: 7, name: 'Caroline Schultz' },
+    { value: 8, name: 'Mason Heaney' },
+    { value: 9, name: 'Claudie Smitham' },
+    { value: 10, name: 'Emil Schaefer' },
   ]
 
   const employeeData = computed(()=>{
@@ -38,16 +43,21 @@ const people = [
   })
 
   const getEmployees = async () => {
-    employees.value = await client.request(withToken('OUTeX5b3yYi4PbtOttQMbjGfZ1iG5GRK', readItems('employees',{
+    return await client.request(withToken('OUTeX5b3yYi4PbtOttQMbjGfZ1iG5GRK', readItems('employees',{
         fields:'user.*.*'
     })))
+  }
+
+  const callingApi = ()=>{
+    return useQuery('employee', getEmployees)
   }
 
 return{
     columns,
     people,
     employeeData,
-    getEmployees
+    getEmployees,
+    callingApi
 }
 
 }
